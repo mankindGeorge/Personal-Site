@@ -12,7 +12,12 @@
           :class="{ visible: statsVisible }"
           :style="{ '--delay': `${i * 0.1}s` }"
         >
-          <div class="stat-icon">{{ stat.icon }}</div>
+          <AnimatedIcon 
+            :name="stat.icon"
+            :size="32"
+            :color="stat.color"
+            :hoverColor="stat.hoverColor"
+          />
           <div class="stat-content">
             <span class="stat-number">{{ stat.value }}</span>
             <span class="stat-label">{{ stat.label }}</span>
@@ -185,6 +190,7 @@
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import HeroSection from '@/components/home/HeroSection.vue'
 import TechStack from '@/components/home/TechStack.vue'
+import AnimatedIcon from '@/components/common/AnimatedIcon.vue'
 
 const statsRef = ref(null)
 const statsVisible = ref(false)
@@ -204,10 +210,10 @@ const cardGap = 40
 const showBackToTop = ref(false)
 
 const stats = [
-  { icon: '📝', value: '15+', label: '文章' },
-  { icon: '🚀', value: '5+', label: '项目' },
-  { icon: '🎓', value: '大二', label: '学生' },
-  { icon: '☕', value: '∞', label: '热情' }
+  { icon: 'file-text', value: '15+', label: '文章', color: '#00FFCC', hoverColor: '#B026FF' },
+  { icon: 'rocket', value: '5+', label: '项目', color: '#B026FF', hoverColor: '#00FFCC' },
+  { icon: 'graduation-cap', value: '大二', label: '学生', color: '#00FFCC', hoverColor: '#B026FF' },
+  { icon: 'sparkles', value: '∞', label: '热情', color: '#B026FF', hoverColor: '#00FFCC' }
 ]
 
 const skills = [

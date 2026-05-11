@@ -2,6 +2,7 @@
   <div class="app-container">
     <LoadingScreen v-if="isLoading" @complete="onLoadingComplete" />
     <template v-else>
+      <BackgroundEffects />
       <NavBar />
       <main class="main-content">
         <router-view v-slot="{ Component }">
@@ -20,6 +21,7 @@ import { ref, onMounted } from 'vue'
 import LoadingScreen from './components/common/LoadingScreen.vue'
 import NavBar from './components/common/NavBar.vue'
 import Footer from './components/common/Footer.vue'
+import BackgroundEffects from './components/common/BackgroundEffects.vue'
 
 const isLoading = ref(true)
 

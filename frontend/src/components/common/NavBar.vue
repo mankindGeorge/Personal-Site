@@ -150,10 +150,23 @@ onUnmounted(() => {
 
 .logo-icon {
   transition: all 0.3s ease;
+  animation: logo-pulse 3s ease-in-out infinite;
 }
 
 .logo:hover .logo-icon {
   filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6));
+  animation: logo-glow 0.8s ease-in-out;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(0, 255, 204, 0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6)); }
+}
+
+@keyframes logo-glow {
+  0% { filter: drop-shadow(0 0 2px rgba(0, 255, 204, 0.3)); }
+  50% { filter: drop-shadow(0 0 20px rgba(0, 255, 204, 0.8)); }
+  100% { filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6)); }
 }
 
 .logo-text {
@@ -213,12 +226,18 @@ onUnmounted(() => {
   position: absolute;
   bottom: 4px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
+  width: 0;
   height: 2px;
-  background: #00FFCC;
+  background: linear-gradient(90deg, #00FFCC, #B026FF);
   border-radius: 1px;
   box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.router-link-active::after {
+  width: 60%;
 }
 
 .nav-icon {

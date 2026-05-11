@@ -27,7 +27,12 @@
             class="tech-item"
           >
             <div class="tech-icon-wrapper">
-              <span class="tech-icon">{{ tech.emoji }}</span>
+              <AnimatedIcon 
+                :name="tech.icon"
+                :size="20"
+                :color="'#00FFCC'"
+                :hoverColor="'#B026FF'"
+              />
             </div>
             <div class="tech-info">
               <span class="tech-name">{{ tech.name }}</span>
@@ -47,8 +52,9 @@
 
 <script setup>
 import { ref, onMounted, h } from 'vue'
+import AnimatedIcon from '@/components/common/AnimatedIcon.vue'
 
-const { isVisible, elementRef } = { isVisible: ref(false) }
+const isVisible = ref(false)
 const gridRef = ref(null)
 
 const FrontendIcon = () => h('svg', { width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2 }, [
@@ -78,36 +84,36 @@ const techCategories = [
     name: 'Frontend',
     icon: FrontendIcon,
     items: [
-      { name: 'Vue 3', emoji: '⚡', level: 85 },
-      { name: 'TypeScript', emoji: '📘', level: 75 },
-      { name: 'CSS/Tailwind', emoji: '🎨', level: 80 }
+      { name: 'Vue 3', icon: 'code', level: 85 },
+      { name: 'TypeScript', icon: 'code', level: 75 },
+      { name: 'CSS/Tailwind', icon: 'layers', level: 80 }
     ]
   },
   {
     name: 'Backend',
     icon: BackendIcon,
     items: [
-      { name: 'Python', emoji: '🐍', level: 90 },
-      { name: 'FastAPI', emoji: '🚀', level: 85 },
-      { name: 'SQL', emoji: '🗄️', level: 75 }
+      { name: 'Python', icon: 'terminal', level: 90 },
+      { name: 'FastAPI', icon: 'rocket', level: 85 },
+      { name: 'SQL', icon: 'database', level: 75 }
     ]
   },
   {
     name: 'Data Science',
     icon: DataIcon,
     items: [
-      { name: 'Python', emoji: '📊', level: 85 },
-      { name: 'Pandas', emoji: '🐼', level: 80 },
-      { name: 'Machine Learning', emoji: '🤖', level: 70 }
+      { name: 'Python', icon: 'brain', level: 85 },
+      { name: 'Pandas', icon: 'layers', level: 80 },
+      { name: 'Machine Learning', icon: 'brain', level: 70 }
     ]
   },
   {
     name: 'DevOps',
     icon: DevOpsIcon,
     items: [
-      { name: 'Git', emoji: '📦', level: 90 },
-      { name: 'Linux', emoji: '🐧', level: 75 },
-      { name: 'Docker', emoji: '🐳', level: 70 }
+      { name: 'Git', icon: 'git-branch', level: 90 },
+      { name: 'Linux', icon: 'terminal', level: 75 },
+      { name: 'Docker', icon: 'cpu', level: 70 }
     ]
   }
 ]
@@ -225,10 +231,6 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.tech-icon {
-  font-size: 1rem;
 }
 
 .tech-info {
