@@ -1,0 +1,10 @@
+:root {
+  --bg-dark: #0D1117;
+  --bg-darker: #0A0A0A;
+  --neon-cyan: #00FFCC;
+  --neon-purple: #B026FF;
+  --text-primary: #E6EDF3;
+  --text-secondary: #8B949E;
+  --glass-bg: rgba(13, 17, 23, 0.8);
+  --glass-border: rgba(0, 255, 204, 0.1);
+}
